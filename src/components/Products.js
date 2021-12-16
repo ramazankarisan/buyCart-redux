@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../store/actions/cartAction';
 
 
 function Products() {
-
+  const dispatch = useDispatch();
   const bookList = useSelector(state => state.bookList);
 
   return (
@@ -22,7 +23,7 @@ function Products() {
           <h4>{book.name}</h4>
           <p>Yazar: {book.author}</p>
           <p>Fiyat: &#8378; {book.price}</p>
-          <button>Sepete Ekle</button>
+          <button onClick={() => dispatch(addToCart(book))}>Sepete Ekle</button>
         </div>
       </div>)}
     </div>
