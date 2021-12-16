@@ -11,21 +11,21 @@ function Products() {
   return (
     <div>
       <h2>
-        <span>Kitap Listesi</span>
-        <Link to="/cart">Sepetim</Link>
+        <span>Book List</span><Link to="/cart">My Cart</Link>
       </h2>
-      {bookList.map(book => <div className="book">
-        <img
-          src={book.image}
-          alt={book.name}
-        />
-        <div>
-          <h4>{book.name}</h4>
-          <p>Yazar: {book.author}</p>
-          <p>Fiyat: &#8378; {book.price}</p>
-          <button onClick={() => dispatch(addToCart(book))}>Sepete Ekle</button>
-        </div>
-      </div>)}
+      {bookList.map(book =>
+        <div className="book" key={book.id}>
+          <img
+            src={book.image}
+            alt={book.name}
+          />
+          <div>
+            <h4>{book.name}</h4>
+            <p>Author: {book.author}</p>
+            <p>Price: &#36; {book.price}</p>
+            <button onClick={() => dispatch(addToCart(book))}>Add to Cart</button>
+          </div>
+        </div>)}
     </div>
   )
 }
