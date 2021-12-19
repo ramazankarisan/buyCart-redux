@@ -8,10 +8,15 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 function Products() {
   const dispatch = useDispatch();
   const bookList = useSelector(state => state.cart.bookList);
+  const message = useSelector(state => state.cart.message)
 
   const popoverAddition = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">This item added to the cart! </Popover.Header>
+      <Popover.Header as="h3"> This item added to the cart! </Popover.Header>
+    </Popover>)
+  const popoverAlreadyAdded = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3"> 'this item is already added to the cart' </Popover.Header>
     </Popover>)
 
   return (
@@ -30,7 +35,7 @@ function Products() {
             <p>Author: {book.author}</p>
             <p>Price: &#36; {book.price}</p>
 
-            <OverlayTrigger trigger="focus" placement="right" overlay={popoverAddition}>
+            <OverlayTrigger trigger="focus" placement="right" overlay={message ? popoverAlreadyAdded : popoverAddition}>
               <button onClick={() => dispatch(addToCart(book))}>Add to Cart</button>
             </OverlayTrigger>
 

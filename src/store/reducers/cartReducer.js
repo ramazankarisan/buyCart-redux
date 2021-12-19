@@ -14,7 +14,9 @@ function cartReducer(state = initialState, { type, payload, index, ...action }) 
 
       // just to prevent to add more than one item in the cart
       if (!state.cart.some(item => item.name === payload.name)) {
-        return { ...state, cart: [...state.cart, payload] }
+        return { ...state, cart: [...state.cart, payload], message: false }
+      } else if (state.cart.some(item => item.name === payload.name)) {
+        return { ...state, message: true }
       }
 
       return state
