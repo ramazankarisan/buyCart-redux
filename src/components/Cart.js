@@ -19,7 +19,7 @@ function Cart() {
 
       {cartBooks.map((book, index) => {
         return <>
-          <div className="book" key={index}>
+          <div className="book" key={book.id}>
             <img
               src={book.image}
               alt={book.name}

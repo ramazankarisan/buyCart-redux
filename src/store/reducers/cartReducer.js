@@ -10,8 +10,10 @@ function cartReducer(state = initialState, { type, payload, index }) {
 
   switch (type) {
     case 'ADD_CART':
-
-      return { ...state, cart: [...state.cart, payload] };
+      if (!state.cart.some(item => item.name === payload.name)) {
+        return { ...state, cart: [...state.cart, payload] }
+      }
+      return state
 
     case 'INC_NUM':
       return {
@@ -23,7 +25,7 @@ function cartReducer(state = initialState, { type, payload, index }) {
         ]
       };
     case 'DEC_NUM':
-      console.log(type, payload);
+
       return {
         ...state,
         cart: [
