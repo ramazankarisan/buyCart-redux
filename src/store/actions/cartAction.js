@@ -30,6 +30,8 @@ export const decBookNum = (book, index) => {
 export const delFromBasket = (id) => {
   return {
     type: 'DEL_ITEM',
-    payload: id
+    payload: id,
+
   }
 }
+

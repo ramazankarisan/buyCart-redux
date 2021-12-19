@@ -3,10 +3,11 @@ import { data } from '../../data';
 
 const initialState = {
   bookList: data,
-  cart: []
+  cart: [],
+
 }
 
-function cartReducer(state = initialState, { type, payload, index }) {
+function cartReducer(state = initialState, { type, payload, index, ...action }) {
 
   switch (type) {
     case 'ADD_CART':
@@ -35,6 +36,8 @@ function cartReducer(state = initialState, { type, payload, index }) {
         ]
       };
     case 'DEL_ITEM':
+
+
       return { ...state, cart: state.cart.filter(item => item.id !== payload) };
     default:
       return state;
