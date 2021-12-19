@@ -11,7 +11,9 @@ function App() {
     <div className="App">
       <h1>Shopping Website</h1>
       <Routes>
+        {/* where we see all Products */}
         <Route path='/' element={<Products />} />
+        {/* page we see all items added to the cart */}
         <Route path='/cart' element={<Cart />} />
       </Routes>
 

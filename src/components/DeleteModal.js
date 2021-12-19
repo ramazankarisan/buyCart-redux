@@ -8,8 +8,10 @@ import { closeDeleteModal } from '../store/actions/modalAction';
 
 function DeleteModal({ id }) {
   const dispatch = useDispatch();
-  const modalShow = useSelector(state => state.modal.modalShow)
-  const index = useSelector(state => state.modal.index)
+  const modalShow = useSelector(state => state.modal.modalShow);
+
+  // to be able to choose corrext item that we want to delete
+  const index = useSelector(state => state.modal.index);
 
 
   return (

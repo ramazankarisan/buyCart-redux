@@ -8,6 +8,7 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 function Products() {
   const dispatch = useDispatch();
   const bookList = useSelector(state => state.cart.bookList);
+
   const popoverAddition = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">This item added to the cart! </Popover.Header>
@@ -31,7 +32,6 @@ function Products() {
 
             <OverlayTrigger trigger="focus" placement="right" overlay={popoverAddition}>
               <button onClick={() => dispatch(addToCart(book))}>Add to Cart</button>
-
             </OverlayTrigger>
 
 

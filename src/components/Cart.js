@@ -37,11 +37,7 @@ function Cart() {
               <p>Total: &#36;{(book.count * book.price).toFixed(2)}</p>
               <p>You have {book.count} item in your basket.</p>
               <button style={{ marginRight: 5 }} onClick={() => dispatch(decBookNum(book, index))} >-</button>
-              <button onClick={() => {
-                dispatch(showDeleteModal(index));
-                // console.log(index)
-                // dispatch(delFromBasket(book.id));
-              }}>Delete from Basket</button>
+              <button onClick={() => dispatch(showDeleteModal(index))}>Delete from Basket</button>
               <button
                 style={{ marginLeft: 5 }}
                 onClick={() => dispatch(incBookNum(book, index))}
@@ -52,7 +48,7 @@ function Cart() {
       })}
 
 
-    </div>
+    </div >
   )
 }
 
