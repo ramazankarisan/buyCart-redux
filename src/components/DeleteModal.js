@@ -2,26 +2,31 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'
+import { delFromBasket } from '../store/actions/cartAction';
 import { closeDeleteModal } from '../store/actions/modalAction';
 
 
-function DeleteModal() {
+function DeleteModal({ id }) {
   const dispatch = useDispatch();
   const modalShow = useSelector(state => state.modal.modalShow)
+  const index = useSelector(state => state.modal.index)
 
 
   return (
     <Modal show={modalShow} onHide={() => dispatch(closeDeleteModal())}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Are you sure?</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>You are just deleting this item from your cart, are you sure?</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => dispatch(closeDeleteModal())}>
-          Close
+        <Button variant="danger" onClick={() => {
+          dispatch(delFromBasket(index));
+          dispatch(closeDeleteModal())
+        }}>
+          Yes
         </Button>
         <Button variant="primary" onClick={() => dispatch(closeDeleteModal())}>
-          Save Changes
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>

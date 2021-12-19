@@ -25,7 +25,7 @@ function Cart() {
       {cartBooks.map((book, index) => {
         return <>
           <div className="book" key={book.id}>
-            <DeleteModal />
+            <DeleteModal id={index} />
             <img
               src={book.image}
               alt={book.name}
@@ -38,8 +38,9 @@ function Cart() {
               <p>You have {book.count} item in your basket.</p>
               <button style={{ marginRight: 5 }} onClick={() => dispatch(decBookNum(book, index))} >-</button>
               <button onClick={() => {
-                dispatch(showDeleteModal());
-                dispatch(delFromBasket(book.id));
+                dispatch(showDeleteModal(index));
+                // console.log(index)
+                // dispatch(delFromBasket(book.id));
               }}>Delete from Basket</button>
               <button
                 style={{ marginLeft: 5 }}

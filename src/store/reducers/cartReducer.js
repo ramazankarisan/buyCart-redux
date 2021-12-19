@@ -37,8 +37,7 @@ function cartReducer(state = initialState, { type, payload, index, ...action }) 
       };
     case 'DEL_ITEM':
 
-
-      return { ...state, cart: state.cart.filter(item => item.id !== payload) };
+      return { ...state, cart: state.cart.filter((item, index) => index !== payload) };
     default:
       return state;
   }

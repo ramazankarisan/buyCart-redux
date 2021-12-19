@@ -7,7 +7,7 @@ export const modalReducer = (state = initialState, action) => {
 
     case 'SHOW_MODAL':
 
-      return { ...state, modalShow: true };
+      return { modalShow: true, index: action.payload };
 
     case 'CLOSE_MODAL':
 

@@ -1,6 +1,7 @@
-export const showDeleteModal = () => {
+export const showDeleteModal = (index) => {
   return {
     type: 'SHOW_MODAL',
+    payload: index
 
 
   }
