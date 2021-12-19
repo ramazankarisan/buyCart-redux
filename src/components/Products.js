@@ -1,23 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../store/actions/cartAction';
-import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { useSelector } from 'react-redux'
+import PopoverAdd from './PopoverAdd';
+
 
 
 function Products() {
-  const dispatch = useDispatch();
   const bookList = useSelector(state => state.cart.bookList);
-  const message = useSelector(state => state.cart.message)
-
-  const popoverAddition = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3"> This item added to the cart! </Popover.Header>
-    </Popover>)
-  const popoverAlreadyAdded = (
-    <Popover id="popover-basic">
-      <Popover.Header as="h3"> 'this item is already added to the cart' </Popover.Header>
-    </Popover>)
 
   return (
     <div>
@@ -35,9 +24,7 @@ function Products() {
             <p>Author: {book.author}</p>
             <p>Price: &#36; {book.price}</p>
 
-            <OverlayTrigger trigger="focus" placement="right" overlay={message ? popoverAlreadyAdded : popoverAddition}>
-              <button onClick={() => dispatch(addToCart(book))}>Add to Cart</button>
-            </OverlayTrigger>
+            <PopoverAdd book={book} />
 
 
           </div>
