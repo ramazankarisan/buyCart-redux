@@ -6,8 +6,8 @@
 
 ## Technologies
 
--Redux
--Bootstrap for some components
--React-routerdom
+- Redux
+- Bootstrap for some components
+- React-routerdom
 
 
